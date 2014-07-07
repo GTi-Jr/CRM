@@ -1,0 +1,115 @@
+<%= render 'layouts/sidebar' %>
+<div class="page-content">
+  <div class="container-fluid">
+    <div class="mail-apps-wrap">
+      <div class="the-box bg-info no-border no-margin heading">
+        <div class="row">
+          <div class="col-sm-6">
+            <h1><i class="fa fa-envelope icon-lg icon-circle icon-bordered"></i> Atividade</h1>
+          </div><!-- /.col-sm-6 -->
+          <div class="col-sm-6 text-right">            
+          </div><!-- /.col-sm-6 -->
+        </div><!-- /.row -->
+      </div>      
+      <div class="the-box toolbar no-border no-margin">
+        <div class="btn-toolbar" role="toolbar">
+          <div class="btn-group">
+            <%= link_to activities_path, :class => "btn btn-info" do%>
+              <i class="fa fa-arrow-left"></i> Voltar
+            <% end %>
+          </div>    
+          </div><!-- /.btn-group .pull-right -->
+        </div><!-- /.btn-toolbar -->
+      </div><!-- /.the-box -->      
+      <div class="the-box no-margin">
+        <div class="row">
+          <div class="col-sm-4 col-md-3">
+            <div class="list-group info square no-border">              
+              <a href="/activities/category/all" class="list-group-item active">Todos<span class="badge badge-success"><%=@total_activities%></span></a>
+              <a href="/activities/category/yours" class="list-group-item">Participando<span class="badge badge-primary"><%=@your_activities%></span></a>
+              <a href="/activities/category/private" class="list-group-item">Privados<span class="badge badge-info"><%=@private_activities%></span></a>
+              <a href="/activities/category/urgent" class="list-group-item">Urgente<span class="badge badge-danger"><%=@urgent_activities%></span></a>
+            </div>
+          </div>
+          
+          <div class="col-sm-8 col-md-9">
+            <h4><%= @activity.name%> - Atividade</h4>
+            <div class="panel panel-transparent panel-square">
+              <div class="panel-heading">
+              <h3 class="panel-title">
+                <a class="block-collapse" data-toggle="collapse" %>
+                  <strong><%= @activity.project.title %></strong>
+                <span class="right-content">
+                  <span class="time"><%= @activity.created_at.to_formatted_s(:short)%></span>
+                </span>
+                </a>
+              </h3>
+              </div>
+              <div id= <%= "activity#{@activity.id}" %> class="collapse in">
+                <div class="panel-body">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+                    Detalhes
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li>
+                    <ul class="mail-info-detail">
+                      <li>Responsável : <strong><%=@activity.user.name%></strong></li>
+                      <li>Email : <strong class="text-danger">                        
+                        <%= @activity.user.email %>                        
+                      </strong></li>
+                      <li>Criado : <%=@activity.created_at.to_formatted_s(:short)%></li>
+                      <li>Nome :  <strong class="text-info"><%=@activity.name%></strong></li>
+                    </ul>
+                    </li>
+                  </ul>
+                </div>
+                  <br>
+                  <br>                  
+                  <p>
+                    <strong>
+                      <%=@activity.description%>
+                    </strong>
+                  </p>
+                  <p>
+                    <div class="the-box full no-border">
+                      <div class="table-responsive">
+                        <table class="table table-th-block table-info">
+                          <thead>
+                            <tr>
+                              <th>Responsável</th>
+                              <th>Status</th>
+                              <th>Prioridade</th>
+                              <th>Categoria</th>
+                              <th>Inicio</th>
+                              <th>Limite</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td><%=@activity.user.name%></td>
+                              <td><%=@activity.status%></td>
+                              <td><%=@activity.priority%></td>
+                              <td><%=@activity.category%></td>
+                              <td><%=@activity.date_begin.to_formatted_s(:short)%></td>
+                              <td><%=@activity.date_limit.to_formatted_s(:short)%></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div><!-- /.table-responsive -->
+                    </div>
+                  </p>
+                </div>
+                <div class="panel-footer"></div>
+              </div>              
+            </div>                       
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>  
+</div>
+<div class="page-content">
+  <%= render 'layouts/footer' %>
+</div>

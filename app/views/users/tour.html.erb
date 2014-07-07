@@ -1,0 +1,344 @@
+<%= render 'layouts/sidebar' %>
+<div class="page-content">
+  <div class="container-fluid">    
+  <h1 class="page-heading">Customer Relationship Manager </h1>
+    <% flash.each do |name, msg| %>
+      <% if msg.is_a?(String) %>
+        <% if flash[:error] -%>
+          <div class="alert alert-danger" >
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <%= content_tag :div, msg, :id => "flash_#{name}" %>
+          </div>
+        <% end %>
+        <% if flash[:alert] -%>
+          <div class="alert alert-warning" >
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <%= content_tag :div, msg, :id => "flash_#{name}" %>
+          </div>
+        <% end %>
+        <% if flash[:notice] -%>
+          <div class="alert alert-info" >
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <%= content_tag :div, msg, :id => "flash_#{name}" %>
+          </div>
+        <% end %>        
+      <% end %>
+    <% end %>
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="the-box no-border bg-info tiles-information">
+          <div class="tiles-inner text-center">
+            <p id="revenue" >Receita</p>
+            <h1 class="bolded">300</h1> 
+            <div class="progress no-rounded progress-xs">
+              <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+              </div><!-- /.progress-bar .progress-bar-success -->
+            </div><!-- /.progress .no-rounded -->
+          </div><!-- /.tiles-inner -->
+        </div><!-- /.the-box no-border -->
+      </div><!-- /.col-sm-3 -->
+
+      <div class="col-sm-3">
+        <div class="the-box no-border bg-primary tiles-information">
+          <div class="tiles-inner text-center">
+            <p id="nclients">Clientes</p>
+            <h1 class="bolded">3</h1> 
+            <div class="progress no-rounded progress-xs">
+              <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+              </div><!-- /.progress-bar .progress-bar-primary -->
+            </div><!-- /.progress .no-rounded -->
+          </div><!-- /.tiles-inner -->
+        </div><!-- /.the-box no-border -->
+      </div><!-- /.col-sm-3 -->
+
+      <div class="col-sm-3">
+        <div class="the-box no-border bg-danger tiles-information">
+          <div class="tiles-inner text-center">
+            <p id="nprojects">Projetos</p>
+            <h1 class="bolded">3</h1> 
+            <div class="progress no-rounded progress-xs">
+              <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+              </div><!-- /.progress-bar .progress-bar-danger -->
+            </div><!-- /.progress .no-rounded -->
+          </div><!-- /.tiles-inner -->
+        </div><!-- /.the-box no-border -->
+      </div><!-- /.col-sm-3 -->
+
+      <div class="col-sm-3">
+        <div class="the-box no-border bg-warning tiles-information">
+          <div class="tiles-inner text-center">
+            <p id="nemails">E-mails</p>
+            <h1 class="bolded">4</h1> 
+            <div class="progress no-rounded progress-xs">
+              <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+              </div><!-- /.progress-bar .progress-bar-warning -->
+            </div><!-- /.progress .no-rounded -->
+          </div><!-- /.tiles-inner -->
+        </div><!-- /.the-box no-border -->
+      </div><!-- /.col-sm-3 -->
+    </div>
+
+    <div class="col-sm-6">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+        <h3 class="panel-title">
+          <a class="block-collapse collapsed" data-toggle="collapse" href="#panel-collapse-1" id="lastcontacts">
+            Contatos - Ultimos
+          <span class="right-content">
+            <span class="right-icon"><i class="glyphicon glyphicon-plus icon-collapse"></i></span>
+          </span>
+          </a>
+        </h3>
+        </div>
+        <div id="panel-collapse-1" class="collapse" style="height: auto;">
+          <% @contacts.each do |c|  %>
+            <div class="panel-body">
+              <%= link_to c.name, c.client %>
+            </div>
+          <% end %>
+        </div><!-- /.collapse in -->          
+      </div><!-- /.panel panel-primary -->
+    </div>
+
+    <div class="col-sm-6">
+      <div class="panel panel-warning">
+        <div class="panel-heading">
+        <h3 class="panel-title">
+          <a class="block-collapse collapsed" data-toggle="collapse" href="#panel-collapse-2" id="lastemails">
+          E-mails - Ultimos
+          <span class="right-content">
+            <span class="right-icon"><i class="glyphicon glyphicon-plus icon-collapse"></i></span>
+          </span>
+          </a>
+        </h3>
+        </div>
+        <div id="panel-collapse-2" class="collapse" style="height: auto;">
+          <% @emails.each do |e|  %>
+            <div class="panel-body">
+              <%= link_to "#{e.subject} - #{e.sender}", e %>
+            </div>
+          <% end %>
+        </div><!-- /.collapse in -->
+      </div><!-- /.panel panel-warning -->
+    </div>
+
+    <div class="col-sm-6">
+      <div class="panel panel-danger">
+        <div class="panel-heading">
+        <h3 class="panel-title">
+          <a class="block-collapse collapsed" data-toggle="collapse" href="#panel-collapse-3" id="lastprojects">
+          Projetos
+          <span class="right-content">
+            <span class="right-icon"><i class="glyphicon glyphicon-plus icon-collapse"></i></span>
+          </span>
+          </a>
+        </h3>
+        </div>
+        <div id="panel-collapse-3" class="collapse" style="height: auto;">
+          <% @projects.each do |p|  %>
+            <div class="panel-body">
+              <%= link_to "#{p.title} - #{p.client.name}", p %>
+            </div>
+          <% end %>
+        </div><!-- /.collapse in -->
+      </div><!-- /.panel panel-warning -->
+    </div>
+
+    <div class="col-sm-6">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+        <h3 class="panel-title">
+          <a class="block-collapse collapsed" data-toggle="collapse" href="#panel-collapse-4" id="lastactivities">
+          Tarefas
+          <span class="right-content">
+            <span class="right-icon"><i class="glyphicon glyphicon-plus icon-collapse"></i></span>
+          </span>
+          </a>
+        </h3>
+        </div>
+        <div id="panel-collapse-4" class="collapse" style="height: auto;">
+          <% @activities.each do |a|  %>
+            <div class="panel-body">
+              <%= link_to "#{a.name} - #{a.project.title}", a %>
+            </div>
+          <% end %>
+        </div><!-- /.collapse in -->
+      </div><!-- /.panel panel-warning -->
+    </div>
+
+    <div class="col-sm-12">
+      <div class="the-box text-center">
+      <h2 class="light">Calendários</h2>
+      </div><!-- /.the-box -->
+    </div>
+
+    <div class="row">  
+      <div class="col-sm-6" id="activitiescalendar">
+        <div id='calendar'></div>
+      </div>
+
+      <div class="col-sm-6" id="gmailcalendar">
+        <div id='calendar2'></div>
+      </div>  
+    </div> 
+  </div>
+</div>
+
+<div class="page-content">
+  <%= render 'layouts/footer' %>
+</div>
+
+<script>
+  $('#calendar').fullCalendar({
+    editable: false,
+    weekMode: 'fixed',
+    events: [
+      <% @activities.each do |a| %>   
+        {
+          title: "<%= a.name %>",
+
+          start: new Date( "<%= a.date_limit.year %>", "<%= a.date_limit.month - 1 %>", "<%= a.date_limit.day%>"),
+
+          allDay: true,
+
+          url: '<%= "/activities/#{a.id}"%>'
+        },
+      <% end %>
+    ]
+  })
+
+  $('#calendar2').fullCalendar({
+    events: 'https://www.google.com/calendar/feeds/gui.carneiro15%40gmail.com/public/basic'
+  })  
+</script>
+
+<script>  
+  var tour = new Tour({
+    backdrop: true,
+    steps: [
+    {
+      element: "#dashboard",
+      title: "Inicio",
+      content: "Bem vindo ao tour =)"
+    },
+    {
+      element: "#dashboard",
+      title: "Inicio",
+      content: "Irei lhe explicar como o CRM funciona"
+    },    
+    {
+      element: "#dashboard",
+      title: "Inicio",
+      content: "Fique atento, mas qualquer coisa há um botão para retornar ao Tour =)"
+    },        
+    {
+      element: "#dashboard",
+      title: "Inicio",
+      content: "Vamos inicar explicando a Dashboard, nela você encontrará informações gerais"
+    },
+    {
+      element: "#revenue",
+      title: "Lucro",
+      content: "Temos aqui o lucro dos projetos somados #aindaEmConstrução"
+    },
+    {
+      element: "#nclients",
+      title: "Clients",
+      content: "Esse é um contatos para todos os Clientes cadastrados #aindaEmConstrução"
+    },
+    {
+      element: "#nprojects",
+      title: "Projetos",
+      content: "Contador para os Projetos #AindaEmConstrução"
+    },
+    {
+      element: "#nemails",
+      title: "Emails",
+      placement: "left",
+      content: "Contados para todos os Emails #AindaEmConstrução"
+    },
+    {
+      element: "#lastcontacts",
+      title: "Ultimos Contatos",
+      content: "Os ultimos contatos adicionados"
+    },
+    {
+      element: "#lastemails",
+      title: "Ultimo Emails",
+      placement: "left",
+      content: "Ultimos emails trocados"
+    },
+    {
+      element: "#lastprojects",
+      title: "Projetos em Curso",
+      content: "Ultimos projetos adicionados"
+    },
+    {
+      element: "#lastactivities",
+      title: "Atividades em Curso",
+      placement: "left",
+      content: "Ultimas atividades adicionadas"
+    },
+    {
+      element: "#activitiescalendar",
+      title: "Calendário de Atividades",
+      content: "Seu calendário de atividades"
+    },
+    {
+      element: "#gmailcalendar",
+      title: "Calendário do Google",
+      placement: "left",
+      content: "Calendário importado do Google Calendar =D"
+    },
+    {
+      element: "#activities",
+      title: "Atividades",
+      content: "Temos o menu de atividades, aqui você poderá geri-las como preferir"
+    },
+    {
+      element: "#clients",
+      title: "Clientes",
+      content: "Menu de Clientes"
+    },
+    {
+      element: "#projects",
+      title: "Projetos",
+      content: "Menu de Projetos"
+    },
+    {
+      element: "#emails",
+      title: "Emails",
+      content: "Menu para Emails"
+    },
+    {
+      element: "#reports",
+      title: "Relatórios",
+      content: "Menu para relatórios, você poderá ter acesso aos seus arquivos no Drive #AindaEmConstrução"
+    },
+    {
+      element: "#users",
+      title: "Usuários",
+      content: "Menu para gerência dos Usuários"
+    },
+    {
+      element: "#tour",
+      title: "Tour",
+      content: "Caso deseje ver novamente o Tour"
+    },
+    {
+      element: "#logout",
+      title: "LogOut",
+      content: "Para sair do sistema"
+    },    
+    {
+      element: "#logout",
+      title: "Tour",
+      content: "Este tour tambem está em construção, logo logo teremos ele por todo o sistema."
+    }
+  ]});
+  // Initialize the tour
+  tour.init();
+  // Start the tour
+  tour.start();
+  tour.restart();
+</script>>

@@ -1,0 +1,89 @@
+<%= render 'layouts/sidebar' %>
+<div class="page-content">
+  <div class="container-fluid">
+    <div class="mail-apps-wrap">
+      <div class="the-box bg-info no-border no-margin heading">
+        <div class="row">
+          <div class="col-sm-6">
+            <h1><i class="fa fa-phone icon-lg icon-circle icon-bordered"></i> Novo Contato</h1>
+          </div>
+        </div>
+      </div>
+      
+      <div class="the-box toolbar no-border no-margin">
+        <div class="btn-toolbar" role="toolbar">
+          <div class="btn-group">
+            <%= link_to :back, :class => "btn btn-info"  do%>
+              <i class="fa fa-arrow-left"></i> Voltar
+            <% end %>
+          </div>
+          <div class="btn-group">            
+          </div>
+        </div>
+      </div>
+      <%= form_for(@contact) do |f| %>
+        <div class="the-box no-margin">
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="form-group">
+                <div class="field">
+                  <label>Facebook</label> 
+                  <%= f.text_field :facebook, :class =>"form-control rounded bold-border" %>
+                </div>
+                <div class="field">
+                  <label>Website</label> 
+                  <%= f.text_field :website, :class =>"form-control rounded bold-border" %>
+                </div>
+                <div class="field">
+                  <label>Twitter</label> 
+                  <%= f.text_field :twitter, :class =>"form-control rounded bold-border" %>
+                </div>
+                <div class="field">
+                  <label>Linked-in</label> 
+                  <%= f.text_field :linkedin, :class =>"form-control rounded bold-border" %>
+                </div>   
+              </div>             
+            </div>
+            <div class="col-sm-8">
+              <div class="form-group">
+                <div class="field">
+                  <%= f.label :name %><br>
+                  <%= f.text_field :name, :class =>"form-control rounded bold-border" %>
+                </div>                              
+                <div class="field">
+                  <%= f.label :email %><br>
+                  <%= f.text_field :email, :class =>"form-control rounded bold-border" %>
+                </div>
+                <div class="field">
+                  <%= f.label :phone %><br>
+                  <%= f.text_field :phone, :class =>"form-control rounded bold-border" %>
+                </div>
+                <div class="field">
+                  <%= f.label :occupation %><br>
+                  <%= f.text_field :occupation, :class =>"form-control rounded bold-border" %>
+                </div>
+                <br>
+                <div class="field">
+                  <%= f.label :background %><br>
+                  <%= f.text_area :background, :class =>"form-control rounded bold-border" %>
+                </div>        
+              </div>
+              <div class="form-group">                
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-info"><i class="fa fa-phone"></i> Save Contato</button>
+          </div>
+        </div>
+      <% end %> 
+    </div>
+  </div> 
+</div>
+
+<div class="page-content">
+  <%= render 'layouts/footer' %>
+</div>
+<script>
+  $(".chosen-select").chosen({disable_search_threshold: 5});
+</script>

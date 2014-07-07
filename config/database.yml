@@ -1,0 +1,16 @@
+development:
+  adapter: postgresql
+  encoding: utf8
+  database: crm_development
+  pool: 5
+
+  adapter: postgresql
+  encoding: utf8
+  database: crm_test
+  pool: 5
+
+production:
+  adapter: postgresql
+  encoding: utf8
+  database: crm_production
+  pool: 5

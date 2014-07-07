@@ -1,0 +1,74 @@
+<%= render 'layouts/sidebar' %>
+<div class="page-content">
+  <div class="container-fluid">
+    <div class="mail-apps-wrap">
+      <div class="the-box bg-info no-border no-margin heading">
+        <div class="row">
+          <div class="col-sm-6">
+            <h1><i class="fa fa-envelope icon-lg icon-circle icon-bordered"></i> E-mails</h1>
+          </div><!-- /.col-sm-6 -->          
+        </div><!-- /.row -->
+      </div>
+      
+      <div class="the-box toolbar no-border no-margin">
+        <div class="btn-toolbar" role="toolbar">
+          <div class="btn-group">
+            <a href="/emails/new" class="btn btn-info"><i class="fa fa-pencil"></i> Novo E-mail</a>
+          </div>
+        </div>
+      </div><!-- /.the-box -->
+      
+      <div class="the-box no-margin">
+        <div class="row">
+          <div class="col-sm-4 col-md-3">
+            <div class="list-group info square no-border">
+              <a href="/emails/category/all" class="list-group-item">Todos<span class="badge badge-success"><%=@total_emails%></span></a>
+              <%if params[:category] == "yours"%>
+                <a href="/emails/category/yours" class="list-group-item active">Seus<span class="badge badge-primary"><%=@your_emails%></span></a>
+              <% else %>
+                <a href="/emails/category/yours" class="list-group-item">Seus<span class="badge badge-primary"><%=@your_emails%></span></a>
+              <% end %>
+
+              <%if params[:category] == "newest"%>
+                <a href="/emails/category/newest" class="list-group-item active">Novos<span class="badge badge-info"><%=@newest_emails%></span></a>
+              <% else %>
+                <a href="/emails/category/newest" class="list-group-item">Novos<span class="badge badge-info"><%=@newest_emails%></span></a>
+              <% end %>
+            </div>
+          </div><!-- /.col-sm-4 col-md-3 -->
+          <div class="col-sm-8 col-md-9">
+            <div class="list-group success square no-side-border">
+              <% @emails.each do |email| %>
+                <div class="list-group-item mail-list">                               
+                  <span class="favorite fa "><%= email.date_sent %></span>
+                  <span class="name"><%= email.client.name %></span>                
+                  <span class="subject"> <%= email.subject %></span>
+                  <a href="/emails/<%= email.id %>"><span class="label label-info">Ler</span></a>
+                  <a href="/emails/<%= email.id %>/edit"><span class="label label-warning">Editar</span></a>
+                  <a href="/emails/<%= email.id %>" data-method="delete"><span class="label label-danger">Deletar</span></a>
+                </div>
+              <% end %>
+            </div>
+          </div><!-- /.col-sm-8 col-md-9 -->
+        </div><!-- /.row -->
+      </div><!-- /.the-box -->
+      
+      <div class="the-box toolbar no-border no-margin">
+        <div class="btn-toolbar" role="toolbar">
+
+          <div class="btn-group pull-right">
+            <%= paginate @emails %>
+          </div><!-- /.btn-group .pull-right -->
+        </div><!-- /.btn-toolbar -->
+      </div><!-- /.the-box -->
+      
+    </div><!-- /.mail-apps-wrap -->
+    <!-- END MAIL APPS INBOX -->
+    
+  
+  </div><!-- /.container-fluid --> 
+</div>
+
+<div class="page-content">
+  <%= render 'layouts/footer' %>
+</div>

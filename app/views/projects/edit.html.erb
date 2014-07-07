@@ -1,0 +1,99 @@
+<%= render 'layouts/sidebar' %>
+<div class="page-content">
+  <div class="container-fluid">
+    <div class="mail-apps-wrap">
+      <div class="the-box bg-info no-border no-margin heading">
+        <div class="row">
+          <div class="col-sm-6">
+            <h1><i class="fa fa-envelope icon-lg icon-circle icon-bordered"></i>  Atualizando Projeto</h1>
+          </div>      
+        </div>
+      </div>      
+      <div class="the-box toolbar no-border no-margin">
+        <div class="btn-toolbar" role="toolbar">
+          <div class="btn-group">
+            <%= link_to projects_path, :class => "btn btn-info"  do%>
+              <i class="fa fa-arrow-left"></i> Voltar
+            <% end %>
+          </div>
+          <div class="btn-group">            
+          </div>
+        </div>
+      </div>
+      <%= form_for(@project) do |f| %>
+        <div class="the-box no-margin">
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label>Gerente</label>
+                <div class="field">                   
+                  <%= f.collection_select :user_id, @users.order('name'),:id, :name, {:prompt => true}, {:class =>"chosen-select form-control bold-border"}%>
+                </div>
+
+                <label>Status</label>
+                <div class="field">                   
+                  <%= f.select :status, ["Em Andamento","Em Espera", "Em Negociação", "Finalizado", "Cancelado"], {:prompt => true},{:class =>"chosen-select form-control bold-border"}  %>
+                </div>
+
+                <label>Categoria</label>
+                <div class="field">                   
+                  <%= f.select :category, ["Em Andamento","Em Espera", "Em Negociação", "Finalizado", "Cancelado"], {:prompt => true},{:class =>"chosen-select form-control bold-border"}  %>
+                </div>
+
+                <label>Prioridade</label>
+                <div class="field">                   
+                  <%= f.select :priority  , ["Baixa","Média", "Alta", "Urgência"], {:prompt => true},{:class =>"chosen-select form-control bold-border"}  %>                  
+                </div>
+
+                <% if @project.user_id == current_user.id%>
+                  <label>Visibilidade</label>
+                  <div class="field">
+                    <%= f.select :visibility, ["Public","Private"], {:prompt => true},{:class =>"chosen-select form-control bold-border"}  %>
+                  </div> 
+                <% end %>                         
+              </div>             
+            </div>
+            <div class="col-sm-8">
+              <div class="form-group">
+
+                <div class="field">
+                  <%= f.label :title %><br>
+                  <%= f.text_field :title, :class =>"form-control rounded bold-border" %>
+                </div>
+                <br>
+                <div class="field">
+                  <%= f.label :description %><br>
+                  <%= f.text_area :description, :class =>"form-control rounded bold-border" %>
+                </div>
+                <br>
+                <div class="field">
+                  <%= f.label :percent %><br>
+                  <%= f.number_field :percent, in: 0..100, :class =>"form-control rounded bold-border" %>
+                </div>
+                <div class="field">
+                  <%= f.label :revenue %><br>
+                  <%= f.number_field :revenue, :class =>"form-control rounded bold-border" %>
+                </div>
+                <div class="field">
+                  <%= f.label :date_estimated %><br>
+                  <%= f.text_field :date_estimated, :class => 'form-control datepicker bold-border' %>
+                </div>
+              </div>
+              <div class="form-group">                
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-info"><i class="fa fa-envelope"></i> Salvar Projeto</button>
+          </div>
+        </div>
+      <% end %> 
+    </div>
+  </div> 
+</div>
+<div class="page-content">
+  <%= render 'layouts/footer' %>
+</div>
+<script>
+  $(".chosen-select").chosen({disable_search_threshold: 5});
+</script>

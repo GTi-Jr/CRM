@@ -1,0 +1,79 @@
+<%= render 'layouts/sidebar' %>
+<div class="page-content">
+  <div class="container-fluid">
+    <div class="mail-apps-wrap">
+      <div class="the-box bg-info no-border no-margin heading">
+        <div class="row">
+          <div class="col-sm-6">
+            <h1><i class="fa fa-envelope icon-lg icon-circle icon-bordered"></i> Mail new</h1>
+          </div><!-- /.col-sm-6 -->          
+        </div><!-- /.row -->
+      </div>
+      
+      <div class="the-box toolbar no-border no-margin">
+        <div class="btn-toolbar" role="toolbar">
+          <div class="btn-group">
+            <%= link_to emails_path, :class => "btn btn-info"  do%>
+              <i class="fa fa-arrow-left"></i> Voltar
+            <% end %>
+          </div>
+          <div class="btn-group">            
+          </div>
+        </div><!-- /.btn-toolbar -->
+      </div><!-- /.the-box -->
+      <%= form_for(@email) do |f| %>
+        <div class="the-box no-margin">
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label>Cliente</label>  
+                <div class="field">
+                  <%= f.collection_select :client_id, @clients.order('name'),:id, :name, {:prompt => true}, {:class =>"chosen-select form-control bold-border"}  %>
+                </div> 
+                <label>Quem enviou?</label>
+                <div class="field">                   
+                  <%= f.select :sender, ["Cliente","Usuário"], {:prompt => true},{:class =>" chosen-select form-control bold-border"}  %>
+                </div>    
+
+                <label>Visibilidade</label>
+                <div class="field">                   
+                  <%= f.select :visibility, ["Public","Private"], {:prompt => true},{:class =>"chosen-select form-control bold-border"}  %>
+                </div>                        
+              </div>             
+            </div><!-- /.col-sm-4 -->
+            <div class="col-sm-8">
+              <div class="form-group">
+                <div class="field">
+                  <%= f.label :subject %><br>
+                  <%= f.text_field :subject, :class =>"form-control rounded bold-border" %>
+                </div>
+                <br>                                    
+                <div class="field">
+                  <%= f.label :message %><br>
+                  <%= f.text_area :message, :class =>"form-control rounded bold-border" %>
+                </div>
+                <br>
+                <div class="field">
+                  <%= f.label :date_sent %><br>
+                  <%= f.text_field :date_sent, :class => 'form-control datepicker bold-border' %>
+                </div>       
+              </div><!-- /.input-group -->
+              <div class="form-group">                
+              </div><!-- /.input-group -->
+            </div><!-- /.col-sm-8 -->
+          </div><!-- /.row -->
+          <div class="form-group">
+            <button type="submit" class="btn btn-info"><i class="fa fa-envelope"></i> Save E-mail</button>
+          </div>
+        </div>
+      <% end %> 
+    </div>
+  </div> 
+</div>
+
+<div class="page-content">
+  <%= render 'layouts/footer' %>
+</div>
+<script>
+  $(".chosen-select").chosen({disable_search_threshold: 5});
+</script>

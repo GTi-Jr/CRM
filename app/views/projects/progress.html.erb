@@ -1,0 +1,91 @@
+<div class="the-box full invoice">
+  <div class="the-box no-border bg-dark" style="vertical-align: text-middle;">
+    <div class="row">
+      <div class="col-sm-6">
+        
+      </div>
+      <div class="col-sm-6 text-right">
+        <address>
+          <strong>Sentir, Inc.</strong><br>
+          795 Folsom Ave, Suite 600<br>
+          San Francisco, CA 94107<br>
+          <abbr title="Phone">P:</abbr> (123) 456-7890
+        </address>
+      </div>
+    </div>
+  </div>
+  <div class="the-box no-border">
+    <h1 class="text-center"><%= @project.title %></h1>
+    <h3 class="text-muted text-center"><%= @project.description %></h3>
+    
+    <div class="row">
+      <div class="col-sm-6">
+      <p>
+        <strong>Cliente: <%= @project.client.name %></strong>
+      </p>
+      <address>
+        Ds. Jatirejo RT 2/21<br>
+        Sendangadi, Mlati, Sleman<br>
+        Yogyakarta, INDONESIA<br>
+        <abbr title="Phone">P:</abbr> (123) 456-7890
+      </address>
+      </div>
+      <div class="col-sm-6 text-right">
+      <p>Inicio: <%=@project.date_begin.to_formatted_s(:short)%></p>
+      </div>
+    </div>
+    
+    <div class="table-responsive">
+      <table class="table table-th-block table-striped table-dark">
+        <thead>
+          <tr>
+            <th>Atividades</th>
+            <th>Responsável</th>
+            <th>Estado</th>
+            <th>Tempo Estimado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @project.activities.each do |a| %>
+            <tr>
+              <td>
+                <p><strong><%= a.name %></strong></p><p></p>
+              </td>
+              <td><%= a.user.name %></td>
+              <td><%= a.status %></td>
+              <td class="text-right"><strong><%=a.date_limit.to_formatted_s(:short)%></strong></td>
+            </tr>
+          <% end %>
+        </tbody>
+        <tfoot>
+          <tr class="success">
+            <td colspan="3" class="text-right">Entrega</td>
+            <td class="text-right"><strong><%=@project.date_limit.to_formatted_s(:short)%></strong></td>
+          </tr>
+          <tr>
+            <div class="progress no-rounded progress-xs">              
+              <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: <%= @project.percent %>%">
+              </div>
+            </div>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+       
+      </div>
+      <div class="col-sm-6 text-right">
+        <p>
+          <strong>Para outras informações</strong>
+        </p>
+        <p>Entre em contato conosco =D</p>
+      </div>
+    </div>
+    
+    <div class="jumbotron jumbotron-sm text-center">
+      <h1>Obrigado por ficar acompanhando, estamos fazendo uma projeto inesquecível. <br> Aguarde =)</h1>
+    </div>
+    
+  </div>
+</div>

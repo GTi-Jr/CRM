@@ -1,0 +1,112 @@
+<%= render 'layouts/sidebar' %>
+<div class="page-content">
+  <div class="container-fluid">
+    <div class="mail-apps-wrap">
+      <div class="the-box bg-info no-border no-margin heading">
+        <div class="row">
+          <div class="col-sm-6">
+            <h1><i class="fa fa-envelope icon-lg icon-circle icon-bordered"></i> E-mail</h1>
+          </div><!-- /.col-sm-6 -->
+          <div class="col-sm-6 text-right">            
+          </div><!-- /.col-sm-6 -->
+        </div><!-- /.row -->
+      </div>      
+      <div class="the-box toolbar no-border no-margin">
+        <div class="btn-toolbar" role="toolbar">
+          <div class="btn-group">
+            <%= link_to emails_path, :class => "btn btn-info"  do%>
+              <i class="fa fa-arrow-left"></i> Voltar
+            <% end %>
+          </div>    
+          </div><!-- /.btn-group .pull-right -->
+        </div><!-- /.btn-toolbar -->
+      </div><!-- /.the-box -->      
+      <div class="the-box no-margin">
+        <div class="row">
+          <div class="col-sm-4 col-md-3">
+            <div class="list-group info square no-border">              
+              <a href="/emails/category/all" class="list-group-item active">Todos<span class="badge badge-success"><%=@total_emails%></span></a>
+              <a href="/emails/category/yours" class="list-group-item">Seus<span class="badge badge-primary"><%=@your_emails%></span></a>
+              <a href="/emails/category/newest" class="list-group-item">Novos<span class="badge badge-info"><%=@newest_emails%></span></a>
+            </div>
+          </div>
+
+          <div class="col-sm-8 col-md-9">
+            <h4><%= @email.subject%></h4>
+            <div class="panel panel-transparent panel-square">
+              <div class="panel-heading">
+              <h3 class="panel-title">
+                <a class="block-collapse" data-toggle="collapse" href= <%= "#message#{@email.id}" %> >
+                  <strong><%= @email.sender %></strong>
+                <span class="right-content">
+                  <span class="time"><%= @email.date_sent%></span>
+                </span>
+                </a>
+              </h3>
+              </div>
+              <div id= <%= "message#{@email.id}" %> class="collapse in">
+                <div class="panel-body">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+                    Detalhes
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li>
+                    <ul class="mail-info-detail">
+                      <li>From : <strong><%=@email.sender%></strong></li>
+                      <li>Email : <strong class="text-danger">
+                        <% if @email.sender == @email.client.name %>
+                          <%= @email.client.email %>
+                        <% else %>
+                          <%= @email.user.email %>
+                        <% end %>
+                      </strong></li>
+                      <li>Sent : <%=@email.date_sent%></li>
+                      <li>Subject :  <strong class="text-info"><%=@email.subject%></strong></li>
+                    </ul>
+                    </li>
+                  </ul>
+                </div>
+                  <br>
+                  <br>                  
+                  <p>
+                  <%=@email.message%>
+                  </p>
+                </div>
+                <div class="panel-footer"></div>
+              </div>              
+            </div>
+
+
+            <% @email_list.each do |e| %>
+              <div class="panel panel-transparent panel-square">
+                <div class="panel-heading">
+                  <h3 class="panel-title">
+                    <a class="block-collapse" data-toggle="collapse" href= <%= "#message#{e.id}" %> >
+                    <strong><%=e.sender%></strong>
+                    <span class="right-content">
+                      <span class="time"><%=e.date_sent%></span>
+                    </span>
+                    </a>
+                  </h3>
+                </div>              
+                  <div id=<%= "message#{e.id}" %> class="collapse">
+                    <div class="panel-body">
+                      <p>
+                        <%=e.message%>
+                      </p>
+                    </div>
+                    <div class="panel-footer"></div>
+                  </div>
+              </div>
+            <%end%>                       
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>  
+</div>
+<div class="page-content">
+  <%= render 'layouts/footer' %>
+</div>

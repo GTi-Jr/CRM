@@ -1,0 +1,51 @@
+<%= render 'layouts/sidebar' %>
+
+<div class="page-content">
+  <div class="container-fluid">
+    <div class="mail-apps-wrap">
+      <div class="the-box bg-info no-border no-margin heading">
+        <div class="row">
+          <div class="col-sm-6">
+            <h1><i class="fa fa-male icon-lg icon-circle icon-bordered"></i> Usuários</h1>
+          </div>         
+        </div>
+      </div> 
+    </div>
+    <div class="container-fluid">
+      <h1 class="page-heading">
+        <a class="btn btn-info" href="/users/new">
+          <i class="fa fa-plus-square"> Novo Usuário</i>
+        </a>
+      </h1>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            <% @users.each do |user| %>
+              <div class="col-sm-4">
+                <div class="the-box no-border">
+                  <div class="media user-card-sm">
+                    <div class="media-body">
+                    <h4 class="media-heading"><%= user.name %></h4>
+                    <p class="text-info"><%= user.email %></p>
+                    </div>
+                    <div class="right-button">
+                    <a class="btn btn-info" href="/users/<%= user.id %>"><i class="fa fa-search"> Ver</i></a>
+                    <a class="btn btn-info" href="/users/<%= user.id %>/edit"><i class="fa fa-edit"> Editar</i></a>
+                    <%= link_to url_for(action: :destroy,id: user.id), class: "btn btn-info", data: {confirm: "Você tem certeza?"} do %>
+                      <i class="fa fa-exclamation-triangle"> Deletar</i>
+                    <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="page-content">
+  <%= render 'layouts/footer' %>
+</div>
+
