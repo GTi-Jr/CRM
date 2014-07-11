@@ -3,6 +3,7 @@ class Project < ActiveRecord::Base
   /Escopos/
   scope :public_or_yours, ->(current_user) { where("visibility = 'Public' OR user_id = ?", current_user.id) }
   scope :private_or_yours, ->(current_user) { where("visibility = 'Private' OR user_id = ?", current_user.id) }
+  scope :high_urgency, -> { where("priority = 'Alta' OR priority = 'Urgente'") }
   
   /Validações/
   validates :status, :presence => true

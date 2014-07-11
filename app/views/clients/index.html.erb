@@ -3,7 +3,7 @@
 <div class="page-content">
   <div class="container-fluid">
     <div class="mail-apps-wrap">
-      <div class="the-box bg-info no-border no-margin heading">
+      <div class="the-box bg-primary no-border no-margin heading">
         <div class="row">
           <div class="col-sm-6">
             <h1><i class="fa fa-users icon-lg icon-circle icon-bordered"></i> Clientes</h1>
@@ -13,7 +13,7 @@
     </div>
     <div class="container-fluid">
       <h1 class="page-heading">
-        <a class="btn btn-info" href="/clients/new">
+        <a class="btn btn-primary" href="/clients/new">
           <i class="fa fa-plus-square"> Novo Cliente</i>
         </a>
       </h1>
@@ -22,16 +22,18 @@
           <div class="row">
             <% @clients.each do |client| %>
               <div class="col-sm-4">
-                <div class="the-box no-border">
-                  <div class="media user-card-sm">
-                    <div class="media-body">
-                    <h4 class="media-heading"><%= client.name %></h4>
-                    <p class="text-info"><%= client.email %></p>
-                    </div>
-                    <div class="right-button">
-                    <a class="btn btn-info" href="/clients/<%= client.id %>"><i class="fa fa-search"> Ver</i></a>
-                    <a class="btn btn-info" href="/clients/<%= client.id %>/edit"><i class="fa fa-edit"> Editar</i></a>
-                    <%= link_to url_for(action: :destroy,id: client.id), class: "btn btn-info", data: {confirm: "Você tem certeza?"} do %>
+                <div class="featured-post-wide">
+                  <div class="featured-text relative">
+                    <h3><%= client.name %></h3>
+                    <p class="date">Criando em: <%=  client.created_at.to_formatted_s(:short)%></p>
+                    <p>
+                      Email: <%= client.email%><br>
+                      Descrição: <%= client.description%>
+                    </p>
+                    <hr>
+                    <a class="btn-sm btn-primary" href="/clients/<%= client.id %>"><i class="fa fa-search"> Ver</i></a>
+                    <a class="btn-sm btn-primary" href="/clients/<%= client.id %>/edit"><i class="fa fa-edit"> Editar</i></a>
+                    <%= link_to url_for(action: :destroy,id: client.id), method: :delete, class: "btn-sm btn-primary", data: {confirm: "Você tem certeza?"} do %>
                       <i class="fa fa-exclamation-triangle"> Deletar</i>
                     <% end %>
                   </div>

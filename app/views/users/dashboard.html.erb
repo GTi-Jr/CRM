@@ -28,8 +28,8 @@
       <div class="col-sm-3">
         <div class="the-box no-border bg-info tiles-information">
           <div class="tiles-inner text-center">
-            <p>Receita</p>
-            <h1 class="bolded">300</h1> 
+            <p>Atividades</p>
+            <h1 class="bolded"><%= @nactivities %></h1> 
             <div class="progress no-rounded progress-xs">
               <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
               </div><!-- /.progress-bar .progress-bar-success -->
@@ -42,7 +42,7 @@
         <div class="the-box no-border bg-primary tiles-information">
           <div class="tiles-inner text-center">
             <p>Clientes</p>
-            <h1 class="bolded">3</h1> 
+            <h1 class="bolded"><%= @nclients %></h1> 
             <div class="progress no-rounded progress-xs">
               <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
               </div><!-- /.progress-bar .progress-bar-primary -->
@@ -55,7 +55,7 @@
         <div class="the-box no-border bg-danger tiles-information">
           <div class="tiles-inner text-center">
             <p>Projetos</p>
-            <h1 class="bolded">3</h1> 
+            <h1 class="bolded"><%= @nprojects %></h1> 
             <div class="progress no-rounded progress-xs">
               <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
               </div><!-- /.progress-bar .progress-bar-danger -->
@@ -68,7 +68,7 @@
         <div class="the-box no-border bg-warning tiles-information">
           <div class="tiles-inner text-center">
             <p>E-mails</p>
-            <h1 class="bolded">4</h1> 
+            <h1 class="bolded"><%= @nemails %></h1> 
             <div class="progress no-rounded progress-xs">
               <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
               </div><!-- /.progress-bar .progress-bar-warning -->
@@ -83,7 +83,7 @@
         <div class="panel-heading">
         <h3 class="panel-title">
           <a class="block-collapse collapsed" data-toggle="collapse" href="#panel-collapse-1">
-          Contatos - Ultimos
+          Clientes - Ultimos
           <span class="right-content">
             <span class="right-icon"><i class="glyphicon glyphicon-plus icon-collapse"></i></span>
           </span>

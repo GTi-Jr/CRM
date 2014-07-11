@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   validates :name, :presence => true
   validates :email, :presence => true
   validates :occupation, :presence => true
-  validates :phone, :presence => true, :numericality => true
+  validates :phone, :presence => true
 
   /Auto Geração de Token/
   before_create { generate_token(:password) }

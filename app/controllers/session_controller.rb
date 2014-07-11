@@ -12,7 +12,7 @@ class SessionController < ApplicationController
     user = User.find_by password: params[:password], email: params[:email]
     if user != nil
       session[:user_id] = user.id
-      redirect_to dashboard_path, :notice => "Logged in!"
+      redirect_to dashboard_path, :notice => "Bem vindo #{user.name} ^_^"
     else
       redirect_to "/log_in", :alert => "Usuário ou Senha Invalidos"     
     end

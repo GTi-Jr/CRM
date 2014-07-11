@@ -2,7 +2,7 @@ class Client < ActiveRecord::Base
   /Validações/
   validates :name, :presence => true
   validates :email, :presence => true
-  validates :phone, :presence => true, :numericality => true
+  validates :phone, :presence => true
   
   /Relacionamentos - Banco de Dados/
   has_many :contacts

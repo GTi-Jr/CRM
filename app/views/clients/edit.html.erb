@@ -2,7 +2,7 @@
 <div class="page-content">
   <div class="container-fluid">
     <div class="mail-apps-wrap">
-      <div class="the-box bg-info no-border no-margin heading">
+      <div class="the-box bg-primary no-border no-margin heading">
         <div class="row">
           <div class="col-sm-6">
             <h1><i class="fa fa-envelope icon-lg icon-circle icon-bordered"></i> Novo Cliente</h1>
@@ -13,7 +13,7 @@
       <div class="the-box toolbar no-border no-margin">
         <div class="btn-toolbar" role="toolbar">
           <div class="btn-group">
-            <%= link_to clients_path, :class => "btn btn-info"  do%>
+            <%= link_to clients_path, :class => "btn btn-danger"  do%>
               <i class="fa fa-arrow-left"></i> Voltar
             <% end %>
           </div>
@@ -54,7 +54,7 @@
                 <br>
                 <div class="field">
                   <%= f.label :phone %><br>
-                  <%= f.text_field :phone, :class =>"form-control rounded bold-border" %>
+                  <%= f.text_field :phone, :class =>"form-control rounded bold-border", :"data-mask" => "(99)9999-9999"  %>
                 </div>
                 <br>                
                 <br>
@@ -68,7 +68,7 @@
             </div><!-- /.col-sm-8 -->
           </div><!-- /.row -->
           <div class="form-group">
-            <button type="submit" class="btn btn-info"><i class="fa fa-male"></i> Save Cliente</button>
+            <button type="submit" class="btn btn-success"><i class="fa fa-male"></i> Save Cliente</button>
           </div>
         </div>
       <% end %> 

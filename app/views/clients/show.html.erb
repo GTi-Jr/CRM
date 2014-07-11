@@ -2,7 +2,7 @@
 <div class="page-content">  
   <div class="container-fluid">
     <div class="mail-apps-wrap">
-      <div class="the-box bg-info no-border no-margin heading">
+      <div class="the-box bg-primary no-border no-margin heading">
         <div class="row">
           <div class="col-sm-6">
             <h1><i class="fa fa-male icon-lg icon-circle icon-bordered"></i> Cliente</h1>
@@ -11,18 +11,18 @@
       </div> 
     </div>
     <br>
-      <a class="btn btn-info" href="/clients">
+      <a class="btn btn-danger" href="/clients">
         <i class="fa fa-arrow-left"> Voltar</i>
       </a>
 
-      <a class="btn btn-info" href="/contacts/<%= @client.id %>/new">
+      <a class="btn btn-primary" href="/contacts/<%= @client.id %>/new">
         <i class="fa fa-plus-square"> Novo Contato</i>
       </a>
     <br>
     <br>    
     <div class="row">
       <div class="col-md-8">
-        <div class="panel with-nav-tabs panel-info panel-square panel-no-border">
+        <div class="panel with-nav-tabs panel-primary panel-square panel-no-border">
           <div class="panel-heading">          
           </div>
             <div class="panel-body">
@@ -115,7 +115,7 @@
 
                     Background: <%= c.background %><br>
 
-                    <a href="/contacts/<%= c.id %>/edit"><span class="label label-info">Editar</span></a>
+                    <a href="/contacts/<%= c.id %>/edit"><span class="label label-primary">Editar</span></a>
                   </p>
                 </div>
                 <div class="panel-footer"></div>

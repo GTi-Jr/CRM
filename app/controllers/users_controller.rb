@@ -11,10 +11,15 @@ class UsersController < InheritedResources::Base
     @projects = Project.public_or_yours(current_user).order(!:created_at).limit(5)
     @emails = Email.public_or_yours(current_user).order(!:created_at).limit(5)
     @activities = Activity.public_or_yours(current_user).order(!:created_at).limit(5)
+
+    @nclients = Client.count
+    @nprojects = Project.public_or_yours(current_user).count
+    @nemails = Email.public_or_yours(current_user).count
+    @nactivities = Activity.public_or_yours(current_user).count
   end
 
   def index
-    @users = User.order(:name).page(params[:page]).per(7)   
+    @users = User.order(:name).page(params[:page]).per(9)   
   end
 
   def show

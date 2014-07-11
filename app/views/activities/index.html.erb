@@ -35,7 +35,7 @@
                   <span class="subject"> <%= activity.name %></span>
                   <a href="/activities/<%= activity.id %>"><span class="label label-info">Ver</span></a>
                   <a href="/activities/<%= activity.id %>/edit"><span class="label label-warning">Atualizar</span></a>
-                  <%= link_to url_for(action: :destroy,id: activity.id), data: {confirm: "Você tem certeza?"} do %>
+                  <%= link_to url_for(action: :destroy,id: activity.id), method: :delete, data: {confirm: "Você tem certeza?"} do %>
                     <span class="label label-danger">Deletar</span>
                   <% end %>
                 </div>

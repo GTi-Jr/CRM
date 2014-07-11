@@ -2,7 +2,7 @@
 <div class="page-content">
   <div class="container-fluid">
     <div class="mail-apps-wrap">
-      <div class="the-box bg-info no-border no-margin heading">
+      <div class="the-box bg-warning no-border no-margin heading">
         <div class="row">
           <div class="col-sm-6">
             <h1><i class="fa fa-envelope icon-lg icon-circle icon-bordered"></i> E-mails</h1>
@@ -13,7 +13,7 @@
       <div class="the-box toolbar no-border no-margin">
         <div class="btn-toolbar" role="toolbar">
           <div class="btn-group">
-            <a href="/emails/new" class="btn btn-info"><i class="fa fa-pencil"></i> Novo E-mail</a>
+            <a href="/emails/new" class="btn btn-warning"><i class="fa fa-pencil"></i> Novo E-mail</a>
           </div>
         </div>
       </div><!-- /.the-box -->
@@ -21,7 +21,7 @@
       <div class="the-box no-margin">
         <div class="row">
           <div class="col-sm-4 col-md-3">
-            <div class="list-group info square no-border">              
+            <div class="list-group warning square no-border">              
               <a href="/emails/category/all" class="list-group-item active">Todos<span class="badge badge-success"><%=@total_emails%></span></a>
               <a href="/emails/category/yours" class="list-group-item">Seus<span class="badge badge-primary"><%=@your_emails%></span></a>
               <a href="/emails/category/newest" class="list-group-item">Novos<span class="badge badge-info"><%=@newest_emails%></span></a>
@@ -36,7 +36,7 @@
                   <span class="subject"> <%= email.subject %></span>
                   <a href="/emails/<%= email.id %>"><span class="label label-info">Ler</span></a>
                   <a href="/emails/<%= email.id %>/edit"><span class="label label-warning">Editar</span></a>
-                  <%= link_to url_for(action: :destroy,id: email.id), data: {confirm: "Você tem certeza?"} do %>
+                  <%= link_to url_for(action: :destroy,id: email.id), method: :delete, data: {confirm: "Você tem certeza?"} do %>
                     <span class="label label-danger">Deletar</span>
                   <% end %>
                 </div>

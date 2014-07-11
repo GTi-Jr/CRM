@@ -41,9 +41,10 @@ class ApplicationController < ActionController::Base
     @private_projects = 0
 
 
-    @total_projects = Project.where("visibility = ? OR user_id = ?", "Public",current_user).count
+    @total_projects = Project.public_or_yours(current_user).count
     @your_projects = Project.where(user: current_user).count
-    @private_projects = Project.where("visibility = ? OR user_id = ?", "Private",current_user).count
+    @private_projects = Project.private_or_yours(current_user).count
+    @urgent_projects = Project.public_or_yours(current_user).high_urgency.count
   end
   helper_method :projects_status
 

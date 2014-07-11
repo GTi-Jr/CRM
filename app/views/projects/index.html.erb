@@ -2,7 +2,7 @@
 <div class="page-content">
   <div class="container-fluid">
     <div class="mail-apps-wrap">
-      <div class="the-box bg-info no-border no-margin heading">
+      <div class="the-box bg-danger no-border no-margin heading">
         <div class="row">
           <div class="col-sm-6">
             <h1><i class="fa fa-usd icon-lg icon-circle icon-bordered"></i> Projetos</h1>
@@ -12,17 +12,18 @@
       <div class="the-box toolbar no-border no-margin">
         <div class="btn-toolbar" role="toolbar">
           <div class="btn-group">
-            <a href="/projects/new" class="btn btn-info"><i class="fa fa-pencil"></i>Novo Projeto</a>
+            <a href="/projects/new" class="btn btn-danger"><i class="fa fa-pencil"></i>Novo Projeto</a>
           </div>
         </div>
       </div>      
       <div class="the-box no-margin">
         <div class="row">
           <div class="col-sm-4 col-md-3">
-            <div class="list-group info square no-border">              
+            <div class="list-group danger square no-border">              
               <a href="/projects/category/all" class="list-group-item active">Todos<span class="badge badge-success"><%=@total_projects%></span></a>
-              <a href="/projects/category/yours" class="list-group-item">Participando<span class="badge badge-primary"><%=@your_projects%></span></a>
+              <a href="/projects/category/yours" class="list-group-item">Gerenciando<span class="badge badge-primary"><%=@your_projects%></span></a>
               <a href="/projects/category/private" class="list-group-item">Privados<span class="badge badge-info"><%=@private_projects%></span></a>
+              <a href="/projects/category/urgent" class="list-group-item">Urgente<span class="badge badge-info"><%=@urgent_projects%></span></a>
             </div>
           </div>
           <div class="col-sm-8 col-md-9">
@@ -34,7 +35,7 @@
                   <span class="subject"> <%= project.title %></span>
                   <a href="/projects/<%= project.id %>"><span class="label label-info">Ver</span></a>
                   <a href="/projects/<%= project.id %>/edit"><span class="label label-warning">Atualizar</span></a>
-                  <%= link_to url_for(action: :destroy,id: project.id), data: {confirm: "Você tem certeza?"} do %>
+                  <%= link_to url_for(action: :destroy,id: project.id), method: :delete, data: {confirm: "Você tem certeza?"} do %>
                     <span class="label label-danger">Deletar</span>
                   <% end %>
                 </div>

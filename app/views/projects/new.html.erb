@@ -2,7 +2,7 @@
 <div class="page-content">
   <div class="container-fluid">
     <div class="mail-apps-wrap">
-      <div class="the-box bg-info no-border no-margin heading">
+      <div class="the-box bg-danger no-border no-margin heading">
         <div class="row">
           <div class="col-sm-6">
             <h1><i class="fa fa-envelope icon-lg icon-circle icon-bordered"></i> Novo Projeto</h1>
@@ -46,7 +46,7 @@
 
                 <label>Prioridade</label>
                 <div class="field">                   
-                  <%= f.select :priority  , ["Baixa","Média", "Alta", "Urgência"], {:prompt => true},{:class =>"chosen-select form-control bold-border"}  %>
+                  <%= f.select :priority  , ["Baixa","Média", "Alta", "Urgente"], {:prompt => true},{:class =>"chosen-select form-control bold-border"}  %>
                 </div>
 
                 <label>Visibilidade</label>
@@ -94,7 +94,7 @@
             </div>
           </div>
           <div class="form-group">
-            <button type="submit" class="btn btn-success"><i class="fa fa-envelope"></i> Save E-mail</button>
+            <button type="submit" class="btn btn-success"><i class="fa fa-envelope"></i> Save Projeto</button>
           </div>
         </div>
       <% end %> 

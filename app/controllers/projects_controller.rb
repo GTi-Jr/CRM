@@ -14,7 +14,10 @@ class ProjectsController < InheritedResources::Base
       @projects = Project.order(!:date_sent).where(user: current_user).page(params[:page]).per(7)
 
     elsif params[:category] == "private"
-      @projects = Project.where("visibility = ? OR user_id = ?", "Private",current_user).order(!:created_at).page(params[:page]).per(7)
+      @projects = Project.private_or_yours(current_user).order(!:created_at).page(params[:page]).per(7)
+
+    elsif params[:category] == "urgent"
+      @projects = Project.public_or_yours(current_user).high_urgency.order(!:created_at).page(params[:page]).per(7)
 
     else
       redirect_to projects_path
@@ -81,6 +84,6 @@ class ProjectsController < InheritedResources::Base
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:token,:visiblity,:title,:date_begin, :user_id, :client_id, :date_limit, :date_estimated,:status, :percent, :category, :priority, :revenue,:description)
+      params.require(:project).permit(:token,:visibility,:title,:date_begin, :user_id, :client_id, :date_limit, :date_estimated,:status, :percent, :category, :priority, :revenue,:description)
     end
 end

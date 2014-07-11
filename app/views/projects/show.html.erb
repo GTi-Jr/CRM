@@ -2,7 +2,7 @@
 <div class="page-content">
   <div class="container-fluid">
     <div class="mail-apps-wrap">
-      <div class="the-box bg-info no-border no-margin heading">
+      <div class="the-box bg-danger no-border no-margin heading">
         <div class="row">
           <div class="col-sm-6">
             <h1><i class="fa fa-usd icon-lg icon-circle icon-bordered"></i> Projeto</h1>
@@ -14,7 +14,7 @@
       <div class="the-box toolbar no-border no-margin">
         <div class="btn-toolbar" role="toolbar">
           <div class="btn-group">
-            <%= link_to projects_path, :class => "btn btn-info" do%>
+            <%= link_to projects_path, :class => "btn btn-danger" do%>
               <i class="fa fa-arrow-left"></i> Voltar
             <% end %>
           </div>    
@@ -24,7 +24,7 @@
       <div class="the-box no-margin">
         <div class="row">
           <div class="col-sm-4 col-md-3">
-            <div class="list-group info square no-border">              
+            <div class="list-group danger square no-border">              
               <a href="/projects/category/all" class="list-group-item active">Todos<span class="badge badge-success"><%=@total_projects%></span></a>
               <a href="/projects/category/yours" class="list-group-item">Participando<span class="badge badge-primary"><%=@your_projects%></span></a>
               <a href="/projects/category/private" class="list-group-item">Privados<span class="badge badge-info"><%=@private_projects%></span></a>
@@ -53,13 +53,13 @@
                   </button>
                   <ul class="dropdown-menu">
                     <li>
-                    <ul class="mail-info-detail">
+                    <ul class="mail-danger-detail">
                       <li>Gerente : <strong><%=@project.user.name%></strong></li>
                       <li>Email : <strong class="text-danger">                        
                         <%= @project.user.email %>                        
                       </strong></li>
                       <li>Criado : <%=@project.created_at.to_formatted_s(:short)%></li>
-                      <li>Nome :  <strong class="text-info"><%=@project.title%></strong></li>
+                      <li>Nome :  <strong class="text-danger"><%=@project.title%></strong></li>
                     </ul>
                     </li>
                   </ul>
@@ -73,7 +73,7 @@
                   <p>
                     <div class="the-box full no-border">
                       <div class="table-responsive">
-                        <table class="table table-th-block table-info">
+                        <table class="table table-th-block table-danger">
                           <thead>
                             <tr>
                               <th>Gestor</th>
@@ -111,7 +111,7 @@
               </div>              
             </div>
             <br>
-            <table class="table table-th-block table-info">
+            <table class="table table-th-block table-danger">
               <thead>
                 <tr>
                   <th>Atividades</th>
@@ -141,7 +141,7 @@
                     <p>
                       <div class="the-box full no-border">
                         <div class="table-responsive">
-                          <table class="table table-th-block table-info">
+                          <table class="table table-th-block table-danger">
                             <thead>
                               <tr>
                                 <th>Responsável</th>
