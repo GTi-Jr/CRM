@@ -10,3 +10,11 @@
   <%= yield %>
 </body>
 </html>
+
+<% if !flash[:alert].blank? %>
+  <%= toastr(flash[:alert], "error") %>
+<% end %>
+
+<% if !flash[:notice].blank? %>
+  <%= toastr(flash[:notice], "success") %>
+<% end %>

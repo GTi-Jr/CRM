@@ -47,6 +47,8 @@ group :development, :test do
  gem 'rspec-rails'
 end
 
+gem 'toastr-rails', '~> 1.0.3'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

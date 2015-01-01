@@ -9,6 +9,12 @@ class UserMailer < ActionMailer::Base
   def password_send(user)
     @user = user
 
-    mail to: @user.email, subject: 'Sua senha de acesso =D'
+    mail to: @user.email, subject: 'Cadastro - CRM'
+  end  
+
+  def recover_password(user)
+    @user = user
+
+    mail to: @user.email, subject: 'Recuperar Senha - CRM'
   end
 end

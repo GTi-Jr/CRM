@@ -24,7 +24,7 @@ class ContactsController < InheritedResources::Base
     @contact.client_id = session[:client_id]
     respond_to do |format|
       if @contact.save
-        format.html { redirect_to "/clients/#{@contact.client_id}", notice: 'Incrição feita com sucesso.' }
+        format.html { redirect_to "/clients/#{@contact.client_id}", notice: 'Criado com sucesso' }
       else
         format.html { render action: 'new'}        
       end
@@ -34,7 +34,7 @@ class ContactsController < InheritedResources::Base
   def update
     respond_to do |format|
       if @contact.update(contact_params)
-        format.html { redirect_to "/clients/#{@contact.client_id}", notice: 'Email was successfully updated.' }
+        format.html { redirect_to "/clients/#{@contact.client_id}", notice: 'Editado com sucesso' }
       else
         format.html { render action: 'edit'}        
       end
@@ -44,7 +44,7 @@ class ContactsController < InheritedResources::Base
   def destroy
     @contact.destroy
     respond_to do |format|
-      format.html { redirect_to clients_path }      
+      format.html { redirect_to clients_path, notice: 'Deletado'  }      
     end
   end
 

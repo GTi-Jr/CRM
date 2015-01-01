@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
 
-  after_save :password_notification, :if => :password_changed?
+  after_create :password_notification
+
+  after_update :recover_password, :if => :password_changed?
 
   /Validações/
   validates :name, :presence => true
@@ -19,6 +21,10 @@ class User < ActiveRecord::Base
   private
     def password_notification
       UserMailer.password_send(self).deliver
+    end
+
+    def recover_password
+      UserMailer.recover_password(self).deliver
     end
 
     def generate_token(column)

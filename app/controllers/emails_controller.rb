@@ -51,7 +51,7 @@ class EmailsController < InheritedResources::Base
 
     respond_to do |format|
       if @email.save
-        format.html { redirect_to emails_path, notice: 'Incrição feita com sucesso.' }
+        format.html { redirect_to emails_path, notice: 'Criado com sucesso.' }
       else
         format.html { render action: 'new'}        
       end
@@ -61,7 +61,7 @@ class EmailsController < InheritedResources::Base
   def update
     respond_to do |format|
       if @email.update(email_params)
-        format.html { redirect_to @email, notice: 'Email was successfully updated.' }
+        format.html { redirect_to @email, notice: 'Editado com sucesso' }
       else
         format.html { render action: 'edit'}        
       end
@@ -71,7 +71,7 @@ class EmailsController < InheritedResources::Base
   def destroy
     @email.destroy
     respond_to do |format|
-      format.html { redirect_to emails_path }      
+      format.html { redirect_to emails_path, notice: 'Deletado'}      
     end
   end
 
