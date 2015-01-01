@@ -46,13 +46,17 @@ class UsersController < InheritedResources::Base
 
   def tour
     if current_user.tour != true
-      current_user.tour = true
-      current_user.save
+      current_user.update_attribute(tour: true)
     end    
     @contacts = Contact.order(!:created_at).limit(5)
     @projects = Project.public_or_yours(current_user).order(!:created_at).limit(5)
     @emails = Email.public_or_yours(current_user).order(!:created_at).limit(5)
     @activities = Activity.public_or_yours(current_user).order(!:created_at).limit(5)
+
+    @nclients = Client.count
+    @nprojects = Project.public_or_yours(current_user).count
+    @nemails = Email.public_or_yours(current_user).count
+    @nactivities = Activity.public_or_yours(current_user).count
   end
 
   def update
