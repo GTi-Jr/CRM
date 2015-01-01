@@ -37,7 +37,7 @@ class UsersController < InheritedResources::Base
     @user = User.new(user_params)
     respond_to do |format|
       if @user.save
-        format.html { redirect_to users_path, notice: 'Incrição feita com sucesso.' }
+        format.html { redirect_to users_path, notice: 'Criado com sucesso' }
       else
         format.html { render action: 'new'}        
       end
@@ -62,7 +62,7 @@ class UsersController < InheritedResources::Base
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'Email was successfully updated.' }
+        format.html { redirect_to @user, notice: 'Editado com sucesso' }
       else
         format.html { render action: 'edit'}        
       end
@@ -72,7 +72,7 @@ class UsersController < InheritedResources::Base
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_path }      
+      format.html { redirect_to users_path, notice: 'Deletado' }      
     end
   end
 

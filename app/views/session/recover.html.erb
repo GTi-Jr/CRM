@@ -2,30 +2,6 @@
   <div class="login-wrapper">
     <div class="text-center alert alert-info alert-bold-border fade in alert-dismissable">Recupere a sua senha</div>  
     <%= form_tag do %>
-      <% flash.each do |name, msg| %>      
-        <% if msg.is_a?(String) %>
-          <% if flash[:error] -%>
-            <div class="alert alert-danger" >
-              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-              <%= content_tag :div, msg, :id => "flash_#{name}" %>
-            </div>
-          <% end %>
-
-          <% if flash[:alert] -%>
-            <div class="alert alert-warning" >
-              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-              <%= content_tag :div, msg, :id => "flash_#{name}" %>
-            </div>
-          <% end %>
-
-          <% if flash[:notice] -%>
-            <div class="alert alert-success" >
-              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-              <%= content_tag :div, msg, :id => "flash_#{name}" %>
-            </div>
-          <% end %>
-        <% end %>
-      <% end %>
       <%= form_tag('/recover', method: :put) do %>  
         <div class="form-group has-feedback lg left-feedback no-label">
           <%= text_field_tag :email, params[:email], class: "form-control no-border input-lg rounded", placeholder: "Email" %>

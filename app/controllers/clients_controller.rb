@@ -24,7 +24,7 @@ class ClientsController < InheritedResources::Base
     @client = Client.new(client_params)
     respond_to do |format|
       if @client.save
-        format.html { redirect_to clients_path, notice: 'Incrição feita com sucesso.' }
+        format.html { redirect_to clients_path, notice: 'Criado com sucesso' }
       else
         format.html { render action: 'new'}        
       end
@@ -34,7 +34,7 @@ class ClientsController < InheritedResources::Base
   def update
     respond_to do |format|
       if @client.update(client_params)
-        format.html { redirect_to @client, notice: 'Email was successfully updated.' }
+        format.html { redirect_to @client, notice: 'Atualizado com sucesso' }
       else
         format.html { render action: 'edit'}        
       end
@@ -44,7 +44,7 @@ class ClientsController < InheritedResources::Base
   def destroy
     @client.destroy
     respond_to do |format|
-      format.html { redirect_to clients_path }      
+      format.html { redirect_to clients_path, notice: 'Deletado'  }      
     end
   end
 

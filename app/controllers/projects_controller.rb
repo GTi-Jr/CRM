@@ -52,7 +52,7 @@ class ProjectsController < InheritedResources::Base
     @project = Project.new(project_params)
     respond_to do |format|
       if @project.save
-        format.html { redirect_to projects_path, notice: 'Incrição feita com sucesso.' }
+        format.html { redirect_to projects_path, notice: 'Criado com sucesso' }
       else
         format.html { render action: 'new'}        
       end
@@ -62,7 +62,7 @@ class ProjectsController < InheritedResources::Base
   def update
     respond_to do |format|
       if @project.update(project_params)
-        format.html { redirect_to @project, notice: 'Email was successfully updated.' }
+        format.html { redirect_to @project, notice: 'Editado com sucesso' }
       else
         format.html { render action: 'edit'}        
       end
@@ -72,7 +72,7 @@ class ProjectsController < InheritedResources::Base
   def destroy
     @project.destroy
     respond_to do |format|
-      format.html { redirect_to projects_path }      
+      format.html { redirect_to projects_path, notice: 'Deletado'}      
     end
   end
 
